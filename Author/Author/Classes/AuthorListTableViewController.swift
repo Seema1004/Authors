@@ -11,6 +11,7 @@ import UIKit
 class AuthorListTableViewController: UITableViewController {
     
     public var authorsList: [Author] = []
+    let showPostVCIdentifier = "showPostVC"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,19 @@ class AuthorListTableViewController: UITableViewController {
             }
         }
     }
+    
+    // MARK: - Navigation
 
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == showPostVCIdentifier, let destination = segue.destination as? PostsTableViewController, let selectedRow = self.tableView.indexPath(for: sender as! AuthorsCell) {
+            destination.author = self.authorsList[selectedRow.row]
+        }
+    }
+}
+
+extension AuthorListTableViewController {
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -53,8 +66,12 @@ class AuthorListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:AuthorsCell = self.tableView.dequeueReusableCell(withIdentifier: "authorsCell") as! AuthorsCell
         cell.author = self.authorsList[indexPath.row]
+        cell.accessoryType = .disclosureIndicator
         cell.layoutIfNeeded()
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

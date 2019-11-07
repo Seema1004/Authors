@@ -10,7 +10,7 @@ import UIKit
 
 /*Struct declared for each of the posts posted by Author*/
 
-struct Posts {
+struct Posts: Codable {
     var id: Int?
     var date: String?
     var title: String?
@@ -18,11 +18,16 @@ struct Posts {
     var imageUrl: String?
     var authorId: Int?
     
-    var formattedDate: Date? {
+    var formattedDate: String? {
         get {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .full
-            return dateFormatter.date(from: date ?? "")
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            if let newDate = dateFormatter.date(from: date ?? "") {
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                return dateFormatter.string(from: newDate)
+            }
+            return nil
         }
     }
 }

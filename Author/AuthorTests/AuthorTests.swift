@@ -16,6 +16,27 @@ class AuthorTests: XCTestCase {
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         super.setUp()
+        networkManager.jsonResonse = [[
+            "id" : 1,
+            "name": "Leigh Kessler",
+            "userName": "Myrtie_Heller51",
+            "email": "vance_hansen7@yahoo.com",
+            "avatarUrl": "https://s3.amazonaws.com/uifaces/faces/twitter/nutzumi/128.jpg",
+            "address": [
+                "latitude": "73.5451",
+                "longitude": "155.4534"
+            ]],
+            [
+            "id" : 2,
+            "name": "Homer Bradtke Jr.",
+            "userName": "Trinity.Feeney46",
+            "email": "moriah.zulauf@gmail.com",
+            "avatarUrl": "https://s3.amazonaws.com/uifaces/faces/twitter/nelshd/128.jpg",
+            "address": [
+                "latitude": "50.8177",
+                "longitude": "152.4155"
+            ]]
+        ]
     }
 
     override func tearDown() {

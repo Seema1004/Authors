@@ -11,30 +11,7 @@ import UIKit
 
 class MockNetworkManager {
     var networkResponseError = false
-    
-    var jsonResonse: [[String: Any]] = [[
-        "id" : 1,
-        "name": "Leigh Kessler",
-        "userName": "Myrtie_Heller51",
-        "email": "vance_hansen7@yahoo.com",
-        "avatarUrl": "https://s3.amazonaws.com/uifaces/faces/twitter/nutzumi/128.jpg",
-        "address": [
-            "latitude": "73.5451",
-            "longitude": "155.4534"
-        ]],
-        [
-        "id" : 2,
-        "name": "Homer Bradtke Jr.",
-        "userName": "Trinity.Feeney46",
-        "email": "moriah.zulauf@gmail.com",
-        "avatarUrl": "https://s3.amazonaws.com/uifaces/faces/twitter/nelshd/128.jpg",
-        "address": [
-            "latitude": "50.8177",
-            "longitude": "152.4155"
-        ]]
-    ]
-    
-    
+    var jsonResonse: [[String: Any]] = []
 }
 
 extension MockNetworkManager: NetworkManagerProtocol {

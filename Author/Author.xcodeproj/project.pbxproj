@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F1BE9ECE237462B800F0B891 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BE9ECD237462B800F0B891 /* PostsCell.swift */; };
+		F1BE9ED02374A44900F0B891 /* PostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BE9ECF2374A44900F0B891 /* PostTests.swift */; };
 		F1C3D0CA23729B9800D792D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3D0C923729B9800D792D5 /* AppDelegate.swift */; };
 		F1C3D0CC23729B9800D792D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3D0CB23729B9800D792D5 /* SceneDelegate.swift */; };
 		F1C3D0D123729B9800D792D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1C3D0CF23729B9800D792D5 /* Main.storyboard */; };
@@ -22,6 +24,7 @@
 		F1C3D111237316B600D792D5 /* AuthorsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3D10F237316B600D792D5 /* AuthorsCell.swift */; };
 		F1C3D115237319F800D792D5 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3D114237319F800D792D5 /* CustomExtensions.swift */; };
 		F1C3D11823741B2700D792D5 /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3D11723741B2700D792D5 /* MockNetworkManager.swift */; };
+		F1C3D11D2374541800D792D5 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3D11C2374541800D792D5 /* PostsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F1BE9ECD237462B800F0B891 /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
+		F1BE9ECF2374A44900F0B891 /* PostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTests.swift; sourceTree = "<group>"; };
 		F1C3D0C623729B9800D792D5 /* Author.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Author.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C3D0C923729B9800D792D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1C3D0CB23729B9800D792D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +68,7 @@
 		F1C3D10F237316B600D792D5 /* AuthorsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsCell.swift; sourceTree = "<group>"; };
 		F1C3D114237319F800D792D5 /* CustomExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
 		F1C3D11723741B2700D792D5 /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
+		F1C3D11C2374541800D792D5 /* PostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,7 @@
 		F1C3D0DF23729B9900D792D5 /* AuthorTests */ = {
 			isa = PBXGroup;
 			children = (
+				F1BE9ECF2374A44900F0B891 /* PostTests.swift */,
 				F1C3D0E023729B9900D792D5 /* AuthorTests.swift */,
 				F1C3D11623741B0C00D792D5 /* Mocks */,
 				F1C3D0E223729B9900D792D5 /* Info.plist */,
@@ -161,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				F1C3D1042372AF1D00D792D5 /* AuthorListTableViewController.swift */,
+				F1C3D11C2374541800D792D5 /* PostsTableViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -177,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				F1C3D10F237316B600D792D5 /* AuthorsCell.swift */,
+				F1BE9ECD237462B800F0B891 /* PostsCell.swift */,
 			);
 			path = "Cell Views";
 			sourceTree = "<group>";
@@ -330,6 +339,7 @@
 			files = (
 				F1C3D0CA23729B9800D792D5 /* AppDelegate.swift in Sources */,
 				F1C3D1002372A46700D792D5 /* Posts.swift in Sources */,
+				F1BE9ECE237462B800F0B891 /* PostsCell.swift in Sources */,
 				F1C3D111237316B600D792D5 /* AuthorsCell.swift in Sources */,
 				F1C3D115237319F800D792D5 /* CustomExtensions.swift in Sources */,
 				F1C3D1082372B27600D792D5 /* NetworkManager.swift in Sources */,
@@ -337,6 +347,7 @@
 				F1C3D0FE23729C9300D792D5 /* Author.swift in Sources */,
 				F1C3D0CC23729B9800D792D5 /* SceneDelegate.swift in Sources */,
 				F1C3D1022372A93D00D792D5 /* Comments.swift in Sources */,
+				F1C3D11D2374541800D792D5 /* PostsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +357,7 @@
 			files = (
 				F1C3D11823741B2700D792D5 /* MockNetworkManager.swift in Sources */,
 				F1C3D0E123729B9900D792D5 /* AuthorTests.swift in Sources */,
+				F1BE9ED02374A44900F0B891 /* PostTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
