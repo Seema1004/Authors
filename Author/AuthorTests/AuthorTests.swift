@@ -57,10 +57,16 @@ class AuthorTests: XCTestCase {
     
     func testFetchAuthorsList() {
         
-        let promise = expectation(description: "authors list successfully fetched")
+        let promise = expectation(description: "fetch authors list excuted successfully")
         
+        //self.networkManager.networkResponseError = true // set this for a failure case.
         self.networkManager.executeRequestFor(url: "https:\\mockUrl") { (status, responseData) in
-            if status {
+            if status == false {
+                if responseData == nil {
+                    XCTFail()
+                    return
+                }
+            } else {
                 do {
                     if let listData = responseData {
                         self.authorView.authorsList = try JSONDecoder().decode([Author].self, from: listData)

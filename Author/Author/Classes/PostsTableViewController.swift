@@ -10,7 +10,7 @@ import UIKit
 
 class PostsTableViewController: UITableViewController {
     var author: Author?
-    fileprivate var postList: [Posts] = []
+    var postList: [Posts] = []
     fileprivate var pageNumber = 0
     fileprivate var isPostsBeingFetched = false
 
