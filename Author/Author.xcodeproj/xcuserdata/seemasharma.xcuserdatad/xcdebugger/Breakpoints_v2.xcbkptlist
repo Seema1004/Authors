@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "BD92518E-C1A1-4B96-B5B6-0034725BC290"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A5E589EA-561B-46E6-A436-6FAEF43063EB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Author/Extensions/CustomExtensions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "loadImageUsing(urlString:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8CF596BB-9D11-4345-A615-5C47831F80E5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Author/Modal/Author.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "Address"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "8CF596BB-9D11-4345-A615-5C47831F80E5 - 76be0f23123a20d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Author.Address.init() -&gt; Author.Address"
+                  moduleName = "Author"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seemasharma/Desktop/Author/Author/Modal/Author.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  uuid = "8CF596BB-9D11-4345-A615-5C47831F80E5 - b6a4efa2ddf2ef93"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Author.Address.init(from: Swift.Decoder) throws -&gt; Author.Address"
+                  moduleName = "Author"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seemasharma/Desktop/Author/Author/Modal/Author.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "100">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5C6DAF6D-A54B-4790-BEE3-B32E60D99FF5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AuthorTests/AuthorTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "testFetchAuthorsList()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5C6DAF6D-A54B-4790-BEE3-B32E60D99FF5 - 4b11722c8685c5a1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AuthorTests.AuthorTests.testFetchAuthorsList() -&gt; ()"
+                  moduleName = "AuthorTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seemasharma/Desktop/Author/AuthorTests/AuthorTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "138">
+               </Location>
+               <Location
+                  uuid = "5C6DAF6D-A54B-4790-BEE3-B32E60D99FF5 - 804464b5beda8cc9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Foundation.Data&gt;) -&gt; () in AuthorTests.AuthorTests.testFetchAuthorsList() -&gt; ()"
+                  moduleName = "AuthorTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/seemasharma/Desktop/Author/AuthorTests/AuthorTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "209">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
