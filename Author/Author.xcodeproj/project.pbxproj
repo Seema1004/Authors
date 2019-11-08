@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		F1263EF42374B1AC009B6F96 /* AuthorPostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1263EF32374B1AC009B6F96 /* AuthorPostTests.swift */; };
+		F16C79432375604700B647E4 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16C79422375604700B647E4 /* CommentsViewController.swift */; };
+		F16C79462375767100B647E4 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16C79442375767100B647E4 /* HeaderCell.swift */; };
+		F16C79472375767100B647E4 /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16C79452375767100B647E4 /* HeaderCell.xib */; };
+		F16C79492375FDA500B647E4 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16C79482375FDA500B647E4 /* CustomImageView.swift */; };
 		F1BE9ECE237462B800F0B891 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BE9ECD237462B800F0B891 /* PostsCell.swift */; };
 		F1C3D0CA23729B9800D792D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3D0C923729B9800D792D5 /* AppDelegate.swift */; };
 		F1C3D0CC23729B9800D792D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3D0CB23729B9800D792D5 /* SceneDelegate.swift */; };
@@ -46,6 +50,10 @@
 
 /* Begin PBXFileReference section */
 		F1263EF32374B1AC009B6F96 /* AuthorPostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorPostTests.swift; sourceTree = "<group>"; };
+		F16C79422375604700B647E4 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		F16C79442375767100B647E4 /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		F16C79452375767100B647E4 /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
+		F16C79482375FDA500B647E4 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		F1BE9ECD237462B800F0B891 /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		F1C3D0C623729B9800D792D5 /* Author.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Author.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C3D0C923729B9800D792D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +177,7 @@
 			children = (
 				F1C3D1042372AF1D00D792D5 /* AuthorListTableViewController.swift */,
 				F1C3D11C2374541800D792D5 /* PostsTableViewController.swift */,
+				F16C79422375604700B647E4 /* CommentsViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -186,6 +195,9 @@
 			children = (
 				F1C3D10F237316B600D792D5 /* AuthorsCell.swift */,
 				F1BE9ECD237462B800F0B891 /* PostsCell.swift */,
+				F16C79442375767100B647E4 /* HeaderCell.swift */,
+				F16C79452375767100B647E4 /* HeaderCell.xib */,
+				F16C79482375FDA500B647E4 /* CustomImageView.swift */,
 			);
 			path = "Cell Views";
 			sourceTree = "<group>";
@@ -310,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F16C79472375767100B647E4 /* HeaderCell.xib in Resources */,
 				F1C3D0D623729B9900D792D5 /* LaunchScreen.storyboard in Resources */,
 				F1C3D0D323729B9900D792D5 /* Assets.xcassets in Resources */,
 				F1C3D0D123729B9800D792D5 /* Main.storyboard in Resources */,
@@ -340,11 +353,14 @@
 				F1C3D0CA23729B9800D792D5 /* AppDelegate.swift in Sources */,
 				F1C3D1002372A46700D792D5 /* Posts.swift in Sources */,
 				F1BE9ECE237462B800F0B891 /* PostsCell.swift in Sources */,
+				F16C79492375FDA500B647E4 /* CustomImageView.swift in Sources */,
 				F1C3D111237316B600D792D5 /* AuthorsCell.swift in Sources */,
+				F16C79462375767100B647E4 /* HeaderCell.swift in Sources */,
 				F1C3D115237319F800D792D5 /* CustomExtensions.swift in Sources */,
 				F1C3D1082372B27600D792D5 /* NetworkManager.swift in Sources */,
 				F1C3D1052372AF1D00D792D5 /* AuthorListTableViewController.swift in Sources */,
 				F1C3D0FE23729C9300D792D5 /* Author.swift in Sources */,
+				F16C79432375604700B647E4 /* CommentsViewController.swift in Sources */,
 				F1C3D0CC23729B9800D792D5 /* SceneDelegate.swift in Sources */,
 				F1C3D1022372A93D00D792D5 /* Comments.swift in Sources */,
 				F1C3D11D2374541800D792D5 /* PostsTableViewController.swift in Sources */,

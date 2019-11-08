@@ -9,18 +9,35 @@
 import UIKit
 
 class PostsCell: UITableViewCell {
-    @IBOutlet weak var postImageView: UIImageView!
-    @IBOutlet weak var postTitle: UILabel!
+    @IBOutlet weak var avatarImageView: CustomImageView!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var postBody: UILabel!
     @IBOutlet weak var postDate: UILabel!
     
     var post: Posts? {
         didSet {
-            self.postImageView.loadImageUsing(urlString: post?.imageUrl ?? "")
-            self.postTitle.text = post?.title
+            self.avatarImageView.loadImageUsing(urlString: post?.imageUrl ?? "")
+            self.titleLabel.text = post?.title
             self.postBody.text = post?.body
-            self.postDate.text = post?.formattedDate
+            if let postDate = post?.date {
+                self.postDate.text = postDate.getFormattedDate() ?? ""
+            }
         }
+    }
+    
+    var postComment: Comment? {
+        didSet {
+            self.avatarImageView.loadImageUsing(urlString: postComment?.avatarUrl ?? "")
+            self.titleLabel.text = postComment?.userName
+            self.postBody.text = postComment?.body
+            if let postDate = postComment?.date {
+                self.postDate.text = postDate.getFormattedDate() ?? ""
+            }
+        }
+    }
+    
+    override func prepareForReuse() {
+        self.avatarImageView.image = nil
     }
 
     override func awakeFromNib() {

@@ -13,17 +13,29 @@ class PostsTableViewController: UITableViewController {
     var postList: [Posts] = []
     fileprivate var pageNumber = 0
     fileprivate var isPostsBeingFetched = false
+    private let showCommentVCIdentifier = "showCommentsVC"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = author?.name
+        self.tableView.estimatedRowHeight = 80
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.fetchPostsForAuthor(page: 1)
+        self.initializeCellViews()
+    }
+    
+    func initializeCellViews() {
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.register(UINib(nibName: "HeaderCell", bundle: nil), forCellReuseIdentifier: "HeaderCell")
     }
     
     func fetchPostsForAuthor(page:Int = 0) {
         self.pageNumber = page
         self.isPostsBeingFetched = true
-        NetworkManager().executeRequestFor(url: "https://sym-json-server.herokuapp.com/posts?authorId=\(self.author?.id ?? 0)&_page=\(page)&_limit=10)") { (status, responseData) in
+        
+        let requestURL = "https://sym-json-server.herokuapp.com/posts?authorId=\(self.author?.id ?? 0)&_page=\(page)&_limit=10&_sort=date&_order=asc)"
+        
+        NetworkManager().executeRequestFor(url: requestURL ) { (status, responseData) in
             // reload the table view on the main thread.
             DispatchQueue.main.async {
                 do {
@@ -44,15 +56,14 @@ class PostsTableViewController: UITableViewController {
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == showCommentVCIdentifier, let destination = segue.destination as? CommentsViewController, let selectedRow = self.tableView.indexPath(for: sender as! PostsCell) {
+            let backItem = UIBarButtonItem()
+            backItem.title = "Back"
+            navigationItem.backBarButtonItem = backItem
+            destination.authorPost = self.postList[selectedRow.row]
+        }
     }
-    */
 }
 
 extension PostsTableViewController {
@@ -60,24 +71,40 @@ extension PostsTableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.postList.count
+        return (section == 0) ? 1 : self.postList.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:PostsCell = self.tableView.dequeueReusableCell(withIdentifier: "postCell") as! PostsCell
-        cell.post = self.postList[indexPath.row]
-        cell.accessoryType = .disclosureIndicator
-        cell.layoutIfNeeded()
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell:HeaderCell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell", for: indexPath) as! HeaderCell
+            cell.author = self.author
+            return cell
+        case 1:
+            let cell:PostsCell = self.tableView.dequeueReusableCell(withIdentifier: "postCell") as! PostsCell
+            cell.post = self.postList[indexPath.row]
+            cell.accessoryType = .disclosureIndicator
+            cell.layoutIfNeeded()
+            return cell
+        default :
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+            cell.selectionStyle = .none
+            return cell
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        
+        return indexPath.section == 0 ? 100 : UITableView.automaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 1
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

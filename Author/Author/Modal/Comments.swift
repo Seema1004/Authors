@@ -9,7 +9,7 @@
 import UIKit
 
 /* struct to save the comments added to each of the post posted by Author*/
-struct Comment {
+struct Comment: Codable {
     var id: Int?
     var date: String?
     var body: String?
@@ -18,11 +18,16 @@ struct Comment {
     var avatarUrl: String?
     var postId: Int?
     
-    var formattedDate: Date? {
+    var formattedDate: String? {
         get {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .full
-            return dateFormatter.date(from: date ?? "")
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            if let newDate = dateFormatter.date(from: date ?? "") {
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                return dateFormatter.string(from: newDate)
+            }
+            return nil
         }
     }
 }

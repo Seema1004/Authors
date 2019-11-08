@@ -1,25 +1,26 @@
 //
-//  AuthorsCell.swift
+//  HeaderCell.swift
 //  Author
 //
-//  Created by Seema Sharma on 11/6/19.
+//  Created by Seema Sharma on 11/8/19.
 //  Copyright © 2019 Seema Sharma. All rights reserved.
 //
 
 import UIKit
 
-class AuthorsCell: UITableViewCell {
+class HeaderCell: UITableViewCell {
 
     @IBOutlet weak var authorsImageView: CustomImageView!
     @IBOutlet weak var authorsName: UILabel!
+    @IBOutlet weak var authorsEmail: UILabel!
     
-    /*
-     // set author object in Cell class to access the set the image view.
-    */
     var author: Author? {
         didSet {
+            // The name of the author is mentioned as the page title.
             self.authorsImageView.loadImageUsing(urlString: self.author?.avatarUrl ?? "")
-            self.authorsName.text = self.author?.name
+            self.authorsName.text = self.author?.userName
+            self.authorsEmail.text = self.author?.email
+            //TODO: to display the address based on the location coordinates specified.
         }
     }
     
@@ -30,7 +31,9 @@ class AuthorsCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        authorsImageView.layer.cornerRadius = authorsImageView.frame.size.width/2
+        authorsImageView.clipsToBounds = true
         // Configure the view for the selected state
     }
+    
 }

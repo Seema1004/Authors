@@ -16,24 +16,33 @@ class AuthorListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Authors"
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.fetchAuthorsList()
     }
     
     func fetchAuthorsList() {
-        NetworkManager().executeRequestFor(url: "https://sym-json-server.herokuapp.com/authors") { (status, responseData) in
-            // reload the table view on the main thread.
-            DispatchQueue.main.async {
-                do {
-                    if let listData = responseData {
-                        self.authorsList = try JSONDecoder().decode([Author].self, from: listData)
-                        if self.authorsList.count > 0 {
-                            self.tableView.reloadData()
+        if authorsList.count == 0 {
+            NetworkManager().executeRequestFor(url: "https://sym-json-server.herokuapp.com/authors") { (status, responseData) in
+                // reload the table view on the main thread.
+                DispatchQueue.main.async {
+                    do {
+                        if let listData = responseData {
+                            self.authorsList = try JSONDecoder().decode([Author].self, from: listData)
+                            if self.authorsList.count > 0 {
+                                self.tableView.reloadData()
+                            }
                         }
+                    } catch {
+                        print (error)
                     }
-                } catch {
-                    print (error)
                 }
             }
+        } else {
+            self.tableView.reloadData()
         }
     }
     
@@ -42,6 +51,10 @@ class AuthorListTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showPostVCIdentifier, let destination = segue.destination as? PostsTableViewController, let selectedRow = self.tableView.indexPath(for: sender as! AuthorsCell) {
+            //To change the title of the back button in the navigation bar.
+            let backItem = UIBarButtonItem()
+            backItem.title = "Back"
+            navigationItem.backBarButtonItem = backItem
             destination.author = self.authorsList[selectedRow.row]
         }
     }
@@ -62,13 +75,12 @@ extension AuthorListTableViewController {
     }
 
     // when using a prototype cell, the cellIndetifier should be the same in the storyboard and the cellforRow method.
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:AuthorsCell = self.tableView.dequeueReusableCell(withIdentifier: "authorsCell") as! AuthorsCell
-        cell.author = self.authorsList[indexPath.row]
-        cell.accessoryType = .disclosureIndicator
-        cell.layoutIfNeeded()
-        return cell
+            let cell:AuthorsCell = self.tableView.dequeueReusableCell(withIdentifier: "authorsCell") as! AuthorsCell
+            cell.author = self.authorsList[indexPath.row]
+            cell.accessoryType = .disclosureIndicator
+            cell.layoutIfNeeded()
+            return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

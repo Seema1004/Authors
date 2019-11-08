@@ -50,7 +50,7 @@ class AuthorPostTests: XCTestCase {
     func testfetchPostsForAuthor() {
         let promise = expectation(description: "fetch post list excuted successfully")
         
-        self.networkManager.networkResponseError = true // set this for a failure case.
+        //self.networkManager.networkResponseError = true // set this for a failure case.
         let urlString = "https://mockUrl/posts?authorId=1&_page=1&_limit=20"
         
         self.networkManager.executeRequestFor(url: urlString) { (status, responseData) in
@@ -63,6 +63,7 @@ class AuthorPostTests: XCTestCase {
                 do {
                     if let listData = responseData {
                         self.postVC.postList = try JSONDecoder().decode([Posts].self, from: listData)
+                        
                         XCTAssertNotNil(self.postVC.postList)
                         promise.fulfill()
                     }

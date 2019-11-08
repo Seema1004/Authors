@@ -8,31 +8,16 @@
 
 import UIKit
 
-let imageCache = NSCache<NSString, UIImage>() // using <String, UIImage> leads to compile error as String does not conform to AnyObject type. Hence used NString here.
-
-extension UIImageView {
+extension String {
     
-    func loadImageUsing(urlString: String) {
-        
-        let url = URL.init(string: urlString)
-        self.image = nil
-        
-        if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
-            self.image = imageFromCache
-            return
+    func getFormattedDate() -> String?{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        if let newDate = dateFormatter.date(from: self) {
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            return dateFormatter.string(from: newDate)
         }
-        
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            if error != nil {
-                print(error?.localizedDescription ?? "")
-                return
-            }
-            DispatchQueue.main.async {
-                if let imageToCache = UIImage.init(data: data!) {
-                    self.image = imageToCache
-                    imageCache.setObject(imageToCache, forKey: urlString as NSString)
-                }
-            }
-        }.resume()
+        return nil
     }
 }
