@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Authors-->
         <scene sceneID="DNG-W7-4wE">
             <objects>
                 <tableViewController restorationIdentifier="AuthorListTableViewController" storyboardIdentifier="AuthorListTableViewController" id="pcR-36-AWk" customClass="AuthorListTableViewController" customModule="Author" customModuleProvider="target" sceneMemberID="viewController">
@@ -56,7 +56,7 @@
                             <outlet property="delegate" destination="pcR-36-AWk" id="WRJ-I5-SKX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="1f4-2X-HRZ"/>
+                    <navigationItem key="navigationItem" title="Authors" id="1f4-2X-HRZ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UMc-KZ-cfr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

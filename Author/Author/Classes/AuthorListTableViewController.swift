@@ -26,8 +26,13 @@ class AuthorListTableViewController: UITableViewController {
     
     func fetchAuthorsList() {
         if authorsList.count == 0 {
-            NetworkManager().executeRequestFor(url: "https://sym-json-server.herokuapp.com/authors") { (status, responseData) in
+            NetworkManager().executeRequestFor(url: "https://sym-json-server.herokuapp.com/authors") { (error, responseData) in
                 // reload the table view on the main thread.
+                if error != nil {
+                    print(error?.localizedDescription ?? "request failed")
+                    return
+                }
+                
                 DispatchQueue.main.async {
                     do {
                         if let listData = responseData {
@@ -35,6 +40,9 @@ class AuthorListTableViewController: UITableViewController {
                             if self.authorsList.count > 0 {
                                 self.tableView.reloadData()
                             }
+                            /*// TODO : To use the user defaults to save the data in offline mode. Need to try a better method like saving the data in Response cache.
+                             UserDefaults.standard.set(self.authorsList, forKey: "AuthorsList")
+                             */
                         }
                     } catch {
                         print (error)

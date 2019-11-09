@@ -35,8 +35,13 @@ class PostsTableViewController: UITableViewController {
         
         let requestURL = "https://sym-json-server.herokuapp.com/posts?authorId=\(self.author?.id ?? 0)&_page=\(page)&_limit=10&_sort=date&_order=asc)"
         
-        NetworkManager().executeRequestFor(url: requestURL ) { (status, responseData) in
+        NetworkManager().executeRequestFor(url: requestURL ) { (error, responseData) in
             // reload the table view on the main thread.
+            if error != nil {
+                print(error?.localizedDescription ?? "Request failed")
+                return
+            }
+            
             DispatchQueue.main.async {
                 do {
                     if let listData = responseData {
