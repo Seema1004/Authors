@@ -9,14 +9,14 @@
 import UIKit
 
 protocol NetworkManagerProtocol {
-    func executeRequestFor(url: String, completionHandler: @escaping (Bool, Data?) -> Void)
+    func executeRequestFor(url: String, completionHandler: @escaping (Error?, Data?) -> Void)
 }
 
 class NetworkManager: NetworkManagerProtocol {
 
     fileprivate var dataTask: URLSessionDataTask? // make all the GET requests to server
     fileprivate var defaultSession = URLSession.init(configuration: .default) // creating a default urlsession object
-    public typealias CompletionBlock = (Bool, Data?) -> Void // creating a completion block
+    public typealias CompletionBlock = (Error?, Data?) -> Void // creating a completion block
     
     public func executeRequestFor(url: String, completionHandler: @escaping CompletionBlock) {
         // convert to the url to a non optional object.
@@ -28,11 +28,12 @@ class NetworkManager: NetworkManagerProtocol {
             if (error != nil) {
                 print ("DataTask error: " +
                     error!.localizedDescription + "\n")
+                completionHandler(error,nil)
             } else {
                 if let data = data,
                     let response = response as? HTTPURLResponse,
                     response.statusCode == 200 {
-                    completionHandler(true, data)
+                    completionHandler(nil, data)
                 }
             }
         }

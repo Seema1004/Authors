@@ -11,7 +11,7 @@ import UIKit
 class CommentsViewController: UITableViewController {
 
     var authorPost: Posts?
-    fileprivate var commentsList: [Comment] = []
+    var commentsList: [Comment] = []
     fileprivate var pageNumber = 0
     fileprivate var isCommentsBeingFetched = false
     

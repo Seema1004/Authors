@@ -15,6 +15,8 @@ class AuthorPostTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        postVC.author = Author.init(id: 1, name: "Leigh Kessler", userName: "Myrtie_Heller51", email: "vance_hansen7@yahoo.com", avatarUrl: "https://s3.amazonaws.com/uifaces/faces/twitter/nutzumi/128.jpg", address: nil)
+        
         networkManager.jsonResonse = [
             [
                 "id" : 1,
@@ -50,11 +52,14 @@ class AuthorPostTests: XCTestCase {
     func testfetchPostsForAuthor() {
         let promise = expectation(description: "fetch post list excuted successfully")
         
+        XCTAssertNotNil(postVC.author)
+        
         //self.networkManager.networkResponseError = true // set this for a failure case.
         let urlString = "https://mockUrl/posts?authorId=1&_page=1&_limit=20"
         
-        self.networkManager.executeRequestFor(url: urlString) { (status, responseData) in
-            if status == false {
+        self.networkManager.executeRequestFor(url: urlString) { [weak self] (error, responseData) in
+            guard let weakSelf = self else { return }
+            if error != nil {
                 if responseData == nil {
                     XCTFail()
                     return
@@ -62,9 +67,9 @@ class AuthorPostTests: XCTestCase {
             } else {
                 do {
                     if let listData = responseData {
-                        self.postVC.postList = try JSONDecoder().decode([Posts].self, from: listData)
-                        
-                        XCTAssertNotNil(self.postVC.postList)
+                        let lists: [Posts] = try JSONDecoder().decode([Posts].self, from: listData)
+                        weakSelf.postVC.postList = lists.filter( { $0.authorId == weakSelf.postVC.author?.id })
+                        XCTAssertNotNil(weakSelf.postVC.postList)
                         promise.fulfill()
                     }
                 } catch {

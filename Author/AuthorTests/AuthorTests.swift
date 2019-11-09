@@ -60,8 +60,8 @@ class AuthorTests: XCTestCase {
         let promise = expectation(description: "fetch authors list excuted successfully")
         
         //self.networkManager.networkResponseError = true // set this for a failure case.
-        self.networkManager.executeRequestFor(url: "https:\\mockUrl") { (status, responseData) in
-            if status == false {
+        self.networkManager.executeRequestFor(url: "https:\\mockUrl") { (error, responseData) in
+            if (error != nil) {
                 if responseData == nil {
                     XCTFail()
                     return

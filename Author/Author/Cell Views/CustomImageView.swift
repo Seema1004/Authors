@@ -8,8 +8,6 @@
 
 import UIKit
 
-let imageCache = NSCache<NSString, UIImage>() // using <String, UIImage> leads to compile error as String does not conform to AnyObject type. Hence used NString here
-
 //Using a custom image removes the flickering of images when the table view is scrolled fast.
 // the condition check "self.imageUrlString == urlString" checks for the urlString in the async call to load the image for the given cell it is being called for.
 
@@ -26,7 +24,7 @@ class CustomImageView: UIImageView {
         let url = URL.init(string: urlString)
         self.image = UIImage.init(named: "placeholder")
         
-        if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
+        if let imageFromCache = CacheManager.sharedInstance.getObjectFromCache(key: urlString) as? UIImage {
             self.image = imageFromCache
             return
         }
@@ -41,7 +39,7 @@ class CustomImageView: UIImageView {
                     if self.imageUrlString == urlString {
                         self.image = imageToCache
                     }
-                    imageCache.setObject(imageToCache, forKey: urlString as NSString)
+                    CacheManager.sharedInstance.storeResponse(key: urlString, value: imageToCache)
                 }
             }
         }.resume()

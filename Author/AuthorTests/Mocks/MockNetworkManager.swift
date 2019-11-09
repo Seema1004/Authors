@@ -16,12 +16,17 @@ class MockNetworkManager {
 
 extension MockNetworkManager: NetworkManagerProtocol {
     
-    func executeRequestFor(url: String, completionHandler: @escaping (Bool, Data?) -> Void) {
+    enum customError: Error {
+        case failed
+        case success
+    }
+    
+    func executeRequestFor(url: String, completionHandler: @escaping (Error?, Data?) -> Void) {
         if networkResponseError {
-            completionHandler(false, nil)
+            completionHandler(customError.failed, nil)
         } else {
             if let data = try? JSONSerialization.data(withJSONObject: jsonResonse, options: []) {
-                completionHandler(true,data)
+                completionHandler(nil,data)
             }
         }
     }
