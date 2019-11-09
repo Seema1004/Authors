@@ -1,6 +1,7 @@
 # Authors
 
 - here is an application for microblogging , displaying the list of Authors, posts and comments associated to each of the post they have posted. 
+
 1st screen:
 -- displays the list of author name with their image. 
 -- Used async calls to download the image 
